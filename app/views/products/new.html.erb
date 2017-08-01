@@ -3,9 +3,9 @@
   <br>
   <%= f.text_field :price, placeholder: "Precio del Producto" %><br>
   <br>
-  <% @categorys.each do |category| %>
+  <% @categories.each do |category| %>
     <label for="<%= category.name %>"><%= category.name %></label>
-    <%= f.check_box :categorys, {}, category.name,nil %>
+    <%= f.check_box :categories, {}, category.name,nil %>
     <% end %><br>
     <br>
   <%= f.submit "Crear producto" %>

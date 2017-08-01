@@ -7,19 +7,22 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categorys = Category.all
+    @categories = Category.all
+    @product.categories.new
+    # @pro_cat = @product.categories.new
+    # @category_products = @product.categorys
   end
-
+  
   def create
     @product = Product.new(product_params)
-    @product.categorys.create()
-    # @product.save
+    # @product.categories.new()
+    @product.save
     redirect_to '/products'
   end
 
-  protected
+    protected
     def product_params
-      params.require(:product).permit(:name, :price)
+      params.require(:product).permit(:name, :price, categories_attributes:[:name])
     end
 end
 
