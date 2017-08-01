@@ -1,4 +1,20 @@
-<% @products.each do |product| %>
-    <%= product.productos %>
-    <%= product.categorias %>
-<% end %>
+<table border="1">
+  <tr>
+    <th>Producto</th>
+    <th>Precio</th>
+    <th>Categorias</th>
+  </tr>
+  <% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.price %></td>
+    <td>
+      <% product.categorys.each do |categories| %>
+          <%= categories.name %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br>
+<%= link_to 'Crear Producto', new_product_path() %>
