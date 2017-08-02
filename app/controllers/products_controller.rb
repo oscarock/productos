@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     # @pro_cat = @product.categories.new
     # @category_products = @product.categorys
   end
-  
+
   def create
     @product = Product.new(product_params)
     # @product.categories.new()
@@ -20,9 +20,20 @@ class ProductsController < ApplicationController
     redirect_to '/products'
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to '/products'
+  end
+
     protected
     def product_params
-      params.require(:product).permit(:name, :price, categories_attributes:[:name])
+      # debugger
+      params.require(:product).permit(:name, :price, category_ids: [])
     end
 end
 

@@ -1,19 +1,23 @@
 <table border="1">
   <tr>
+    <th>ID</th>
     <th>Producto</th>
     <th>Precio</th>
     <th>Categorias</th>
+    <th>Acciones</th>
   </tr>
   <% @products.each do |product| %>
   <tr>
+    <td><%= product.id %></td>
     <td><%= product.name %></td>
     <td><%= product.price %></td>
     <td>
       <% product.categories.each do |categories| %>
           <%= categories.name %>
         <% end %>
-      <% end %>
     </td>
+    <td><%= link_to 'Editar', edit_product_path(product) %></td>
+    <% end %>
   </tr>
 </table>
 <br>
